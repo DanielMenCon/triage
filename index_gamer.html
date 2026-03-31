@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Triage Gamer - Asistente de Triage Clínico con temática Dark Fantasy">
+    <title>Santuario de Triage - Dark Fantasy</title>
+    <link rel="stylesheet" href="css/style_gamer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;600&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/png" href="images/favicon_ffta.png">
+</head>
+
+<body>
+    <div id="bg-overlay"></div>
+
+    <!-- Sprites Pixel Art Decorativos -->
+    <img src="images/pixel_spellbook.png" class="corner-sprite top-left" alt="Libro Mágico">
+    <img src="images/pixel_bonfire.png" class="corner-sprite top-right" alt="Hoguera y Caballero">
+    <img src="images/pixel_crystal.png" class="corner-sprite bottom-left" alt="Cristal Mágico">
+    <img src="images/pixel_potion.png" class="corner-sprite bottom-right" alt="Poción de Salud">
+
+    <main id="game-container">
+        <!-- Pantalla de Menú Principal -->
+        <section id="main-menu" class="panel active glass-panel">
+            <header>
+                <h1 class="glow-text">Santuario de Triage</h1>
+                <p class="subtitle">Seleccione su rol de acceso al sistema mágico:</p>
+            </header>
+            <div class="role-selection">
+                <div class="role-card" onclick="openMode('patient')"
+                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openMode('patient'); }"
+                    role="button" tabindex="0">
+                    <div class="card-glow"></div>
+                    <div class="role-icon">⚕️</div>
+                    <h3>Portal del Paciente</h3>
+                    <p>Relata tus aflicciones para ser evaluado por los clérigos.</p>
+                </div>
+                <div class="role-card" onclick="openMode('professional')"
+                    onkeydown="if(event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openMode('professional'); }"
+                    role="button" tabindex="0">
+                    <div class="card-glow"></div>
+                    <div class="role-icon">✨</div>
+                    <h3>Magia Clínica</h3>
+                    <p>Acceso exclusivo de sanitarios para evaluación de triage ESI.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pantalla de Paciente -->
+        <section id="patient-menu" class="panel glass-panel">
+            <header>
+                <h2 class="glow-text">Portal del Paciente</h2>
+                <p class="desc">Declara tus aflicciones para ser evaluado por los clérigos.</p>
+            </header>
+            <form id="patient-form" class="fantasy-form">
+                <div class="form-group">
+                    <label for="pat-pain"><span class="q-icon">🩸</span> ¿Qué nivel de dolor sientes (HP
+                        Perdido)?</label>
+                    <div class="range-wrapper">
+                        <input type="range" id="pat-pain" min="0" max="10" value="0">
+                        <span class="range-val" id="pain-val">0/10</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pat-walk"><span class="q-icon">🥾</span> ¿Puedes caminar (Stamina restante)?</label>
+                    <div class="select-wrapper">
+                        <select id="pat-walk">
+                            <option value="yes">Sí, puedo moverme</option>
+                            <option value="no">No, necesito soporte/camilla</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pat-conscious"><span class="q-icon">👁️</span> Estado de Conciencia (Status):</label>
+                    <div class="select-wrapper">
+                        <select id="pat-conscious">
+                            <option value="normal">Normal (Despierto)</option>
+                            <option value="altered">Alterado (Confusión / Veneno)</option>
+                            <option value="unconscious">Inconsciente / K.O.</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="pat-time"><span class="q-icon">⏳</span> ¿Hace cuánto comenzó todo (Duración del
+                        Debuff)?</label>
+                    <div class="select-wrapper">
+                        <select id="pat-time">
+                            <option value="minutes">Hace unos minutos / De golpe</option>
+                            <option value="hours">Hace unas horas</option>
+                            <option value="days">Hace unos días</option>
+                            <option value="weeks">Hace semanas o meses</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><span class="q-icon">⚠️</span> Señales Críticas (Riesgo Vital):</label>
+                    <div class="checkbox-group"
+                        style="display: flex; flex-direction: column; gap: 15px; margin-top: 5px;">
+                        <label class="custom-checkbox warning">
+                            <input type="checkbox" id="pat-breath">
+                            <span class="checkmark"></span>
+                            <span class="label-text" style="color:#ffcccc;">Falta de aliento / Ahogo (Asfixia)</span>
+                        </label>
+                        <label class="custom-checkbox warning">
+                            <input type="checkbox" id="pat-bleed">
+                            <span class="checkmark"></span>
+                            <span class="label-text" style="color:#ffcccc;">Hemorragia activa sangrante
+                                (Sangrado)</span>
+                        </label>
+                        <label class="custom-checkbox warning">
+                            <input type="checkbox" id="pat-chest">
+                            <span class="checkmark"></span>
+                            <span class="label-text" style="color:#ffcccc;">Presión pesada en el pecho (Golpe al
+                                Corazón)</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="pat-trauma">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Accidente fuerte o caída reciente (Trauma Físico)</span>
+                        </label>
+                        <label class="custom-checkbox">
+                            <input type="checkbox" id="pat-fever">
+                            <span class="checkmark"></span>
+                            <span class="label-text">Fiebre alta sostenida (Aura de Fuego)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <nav class="menu-options dual-buttons">
+                    <button type="button" class="btn-rpg action-btn" onclick="calculateESI('patient')">
+                        Evaluar Vitalidad
+                    </button>
+                    <button type="button" class="btn-rpg return-btn" onclick="openMode('main')">
+                        Volver
+                    </button>
+                </nav>
+            </form>
+        </section>
+
+        <!-- Pantalla Profesional ESI Estricto -->
+        <section id="professional-menu" class="panel glass-panel">
+            <header>
+                <h2 class="glow-text">Triage Clínico (ESI)</h2>
+                <p class="desc">Herramienta de evaluación avanzada.</p>
+            </header>
+            <form id="prof-form" class="fantasy-form">
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="prof-resus">
+                    <span class="checkmark"></span>
+                    <span class="label-text">¿Maniobra de resucitación inmediata (ESI 1)?</span>
+                </label>
+
+                <label class="custom-checkbox">
+                    <input type="checkbox" id="prof-risk">
+                    <span class="checkmark"></span>
+                    <span class="label-text">¿Alto riesgo, letargia o dolor visceral (ESI 2)?</span>
+                </label>
+
+                <div class="form-group">
+                    <label for="prof-resources">¿Cuántos Recursos distintos necesita?</label>
+                    <div class="select-wrapper">
+                        <select id="prof-resources">
+                            <option value="0">Ninguno (ESI 5)</option>
+                            <option value="1">Un recurso (ESI 4)</option>
+                            <option value="many">Múltiples recursos (ESI 3)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label class="custom-checkbox warning">
+                    <input type="checkbox" id="prof-vitals">
+                    <span class="checkmark"></span>
+                    <span class="label-text">¿Signos Vitales en peligro? <span
+                            style="color:#d9d9d9; margin-left: 5px; font-size:11px;">(HR>100, RR>20,
+                            SaO2&lt;92%)</span></span>
+                </label>
+
+                <nav class="menu-options dual-buttons">
+                    <button type="button" class="btn-rpg action-btn" onclick="calculateESI('professional')">
+                        Categorizar Almas
+                    </button>
+                    <button type="button" class="btn-rpg return-btn" onclick="openMode('main')">
+                        Volver
+                    </button>
+                </nav>
+            </form>
+        </section>
+
+        <!-- Pantalla Resultados -->
+        <section id="result-screen" class="panel glass-panel">
+            <header>
+                <h2 class="glow-text">Diagnóstico del Oráculo</h2>
+            </header>
+            <div id="esi-result" class="esi-box default"></div>
+            <p id="esi-desc"></p>
+            <nav class="menu-options">
+                <button class="btn-rpg action-btn" onclick="openMode('main')">
+                    Siguiente Creyente
+                </button>
+            </nav>
+        </section>
+    </main>
+
+    <script src="js/app_gamer.js"></script>
+</body>
+
+</html>
