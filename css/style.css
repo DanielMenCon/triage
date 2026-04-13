@@ -18,6 +18,36 @@
     --font-body: 'Inter', sans-serif;
 }
 
+/* Utility for screen-reader only content */
+.sr-only {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+.skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 0.75rem;
+    background: var(--primary-blue);
+    color: #fff;
+    border-radius: 4px;
+    z-index: 2000;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -241,9 +271,38 @@ p {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: start;
+    grid-template-columns: 1fr minmax(220px, 360px);
+    gap: 1.5rem;
+    align-items: center;
+    align-content: center;
+}
+
+/* Hacer la sección de contacto más compacta */
+#contacto.info-section {
+    padding: 2rem 0;
+}
+
+.contact-details {
+    padding: 0.25rem 0;
+    color: inherit;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.contact-map {
+    justify-self: center;
+    align-self: center;
+}
+
+.contact-map img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    background-color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.06);
 }
 
 /* --- ESPECIALIDADES (Cards UI) --- */
@@ -543,7 +602,8 @@ input[type="range"] {
     .grid-2-cols,
     .form-row,
     .checkbox-grid,
-    .urgency-flex {
+    .urgency-flex,
+    .contact-grid {
         grid-template-columns: 1fr;
         flex-direction: column;
         text-align: center;
