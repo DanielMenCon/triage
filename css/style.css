@@ -7,6 +7,7 @@
 :root {
     --primary-blue: #004b87;
     --secondary-blue: #007acc;
+    /* Color azul secundario para acentos y elementos destacados */
     --medical-green: #007a33;
     --alert-red: #c60f13;
     --alert-yellow: #d37504;
@@ -18,7 +19,8 @@
     --font-body: 'Inter', sans-serif;
 }
 
-/* Utility for screen-reader only content */
+/* --- UTILIDADES DE ACCESIBILIDAD --- */
+/* Oculta contenido visualmente pero lo mantiene disponible para lectores de pantalla */
 .sr-only {
     position: absolute !important;
     height: 1px; width: 1px;
@@ -27,7 +29,7 @@
     white-space: nowrap;
 }
 
-/* Skip link for keyboard users */
+/* Enlace de salto rápido para usuarios que navegan por teclado */
 .skip-link {
     position: absolute;
     left: -999px;
@@ -71,7 +73,7 @@ body {
     outline-offset: 2px;
 }
 
-/* UTILITIES */
+/* --- UTILIDADES GLOBALES Y CONTENEDORES --- */
 .container {
     width: 90%;
     max-width: 1200px;
@@ -116,7 +118,7 @@ p {
     margin-bottom: 1rem;
 }
 
-/* --- TOP BAR (Benchmark: Dávila / Alemana) --- */
+/* --- TOP BAR: Botonera de acción rápida (Benchmark: Clínica Dávila y Alemana) --- */
 .top-bar {
     background-color: var(--bg-light);
     border-bottom: 1px solid #dcdcdc;
@@ -146,7 +148,7 @@ p {
     color: var(--medical-green);
 }
 
-/* --- HEADER --- */
+/* --- HEADER: Encabezado principal del sitio (Navegación / Logo) --- */
 .site-header {
     background-color: var(--primary-blue);
     color: #ffffff;
@@ -202,7 +204,7 @@ p {
     background-color: #9d0b0f;
 }
 
-/* --- HERO --- */
+/* --- SECTION: Portada (Hero) --- */
 .hero-section {
     background: linear-gradient(rgba(0, 75, 135, 0.85), rgba(0, 75, 135, 0.85)), url('../images/clinic_hero.png') center/cover;
     background-color: var(--primary-blue);
@@ -251,7 +253,7 @@ p {
     color: white;
 }
 
-/* --- SECTIONS BASE --- */
+/* --- ESTILOS BASE PARA LAS SECCIONES DE INFORMACIÓN --- */
 .info-section {
     padding: 4rem 0;
 }
@@ -269,6 +271,7 @@ p {
     align-items: center;
 }
 
+/* --- SECTION: Contacto y Ubicación --- */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr minmax(220px, 360px);
@@ -305,7 +308,7 @@ p {
     border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* --- ESPECIALIDADES (Cards UI) --- */
+/* --- SECTION: Especialidades Médicas (Tarjetas de servicios) --- */
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -350,7 +353,7 @@ p {
     margin-bottom: 0;
 }
 
-/* --- URGENCIAS BANNER --- */
+/* --- SECTION: Urgencias 24/7 y Formularios de Triage (Pacientes / Profesional) --- */
 .urgency-section {
     margin-top: 2rem;
 }
@@ -391,7 +394,7 @@ p {
     margin-top: 0.2rem;
 }
 
-/* --- BLOG GRID --- */
+/* --- SECTION: Blog de Educación y Salud Preventiva --- */
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -439,7 +442,7 @@ p {
     text-decoration: underline;
 }
 
-/* --- FORMULARIO ESI --- */
+/* --- FORMULARIOS: Autoevaluación Paciente y ESI Profesional --- */
 .professional-form {
     background: white;
     padding: 2rem;
@@ -535,7 +538,7 @@ input[type="range"] {
     max-width: 400px;
 }
 
-/* --- RESULTADO ESI --- */
+/* --- RESULTADOS: Contenedores y Niveles de Gravedad (ESI 1 a 5) --- */
 .result-container {
     margin-top: 2rem;
     padding: 2rem;
@@ -581,6 +584,7 @@ input[type="range"] {
     background-color: #004b87;
 }
 
+/* --- COMPONENTES COMPLEMENTARIOS: Imagen de Relleno (Sección Investigación) --- */
 .placeholder-image {
     height: 300px;
     display: flex;
@@ -590,13 +594,14 @@ input[type="range"] {
     border: 2px dashed #b5c7d8;
 }
 
+/* --- FOOTER: Pie de página de la plataforma --- */
 .site-footer {
     background-color: #1a1a1a;
     color: #cccccc;
     padding: 2rem 0;
 }
 
-/* --- RESPONSIVIDAD (Móviles) --- */
+/* --- RESPONSIVIDAD: Adaptación para Dispositivos Móviles (Smartphones y Monitores Pequeños) --- */
 @media (max-width: 768px) {
 
     .grid-2-cols,
