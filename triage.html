@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Plataforma de Triage Clínico Universitario. Autoevaluación de pacientes y categorización ESI para profesionales.">
+    <title>Urgencias y Triage - Clínica Universitaria</title>
+
+    <link rel="icon" type="image/png" href="images/favicon_ffta.png">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/triage.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a class="skip-link" href="#main-content">Saltar al contenido</a>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-text">Accesos directos para nuestros pacientes</span>
+            <div class="top-bar-links">
+                <a href="triage.html" class="top-link">📅 Reserva de Horas</a>
+                <a href="triage.html" class="top-link">📄 Resultados de Exámenes</a>
+                <a href="registro.html" class="top-link highlight-link">🔐 Mi Portal Universitario</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="site-header" role="banner">
+        <div class="logo-container">
+            <h1 class="clinic-title">Clínica Universitaria</h1>
+            <p class="clinic-subtitle">Salud, Equidad y Excelencia</p>
+        </div>
+
+        <nav class="main-nav" aria-label="Navegación principal" role="navigation">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="index.html#especialidades">Servicios</a></li>
+                <li><a href="index.html#nosotros">Nosotros</a></li>
+                <li><a href="index.html#blog">Blog</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+                <li><a href="triage.html" class="btn-highlight">Urgencias y Triage</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" role="main">
+        <section id="urgencias" class="urgency-section">
+            <div class="urgency-banner">
+                <div class="container urgency-flex">
+                    <div class="urgency-text">
+                        <h2 class="urgency-title">Servicio de Urgencias 24/7</h2>
+                        <p class="urgency-subtitle">Atención inmediata para adultos y niños. Siempre preparados para ti.</p>
+                    </div>
+                    <div class="wait-time-badge" aria-live="polite">
+                        <span class="wait-label">Tiempo Espera Promedio:</span>
+                        <span class="wait-time">12 min</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="triage-tabs">
+                <button class="btn-primary tab-btn" onclick="showTab('patient-tab')">Autoevaluación Paciente</button>
+                <button class="btn-primary outline tab-btn" onclick="showTab('login-tab')">Acceso Profesionales</button>
+            </div>
+
+            <div class="triage-section bg-light">
+                <div class="container">
+                    <!-- TAB 1: PACIENTES -->
+                    <div id="patient-tab" class="triage-content">
+                        <h3 class="tab-title">Autoevaluación de Gravedad</h3>
+                        <p class="section-desc tab-desc">Descubra un tiempo
+                            estimado de espera sugerido según sus síntomas urgentes.</p>
+
+                        <form id="patient-form" class="professional-form form-centered">
+                            <div class="form-group">
+                                <label for="pat-pain">¿Qué nivel de dolor siente (Escala 0-10)?</label>
+                                <div class="range-controls">
+                                    <input type="range" id="pat-pain" min="0" max="10" value="0">
+                                    <span id="pat-pain-display" class="value-badge">0/10</span>
+                                </div>
+                            </div>
+                            <div class="form-group mt-15">
+                                <label for="pat-walk">¿Puede caminar o desplazarse por su cuenta?</label>
+                                <select id="pat-walk" class="standard-select">
+                                    <option value="yes">Sí, puedo moverme</option>
+                                    <option value="no">No, necesito soporte / silla de ruedas</option>
+                                </select>
+                            </div>
+                            <div class="form-group mt-15">
+                                <label for="pat-conscious">Estado de Conciencia Actual:</label>
+                                <select id="pat-conscious" class="standard-select">
+                                    <option value="normal">Normal (Despierto y orientado)</option>
+                                    <option value="altered">Alterado (Confusión o desorientación)</option>
+                                    <option value="unconscious">Inconsciente / No responde</option>
+                                </select>
+                            </div>
+                            <div class="form-group mt-15">
+                                <label for="pat-time">¿Hace cuánto comenzaron los síntomas?</label>
+                                <select id="pat-time" class="standard-select">
+                                    <option value="minutes">De forma repentina / Hace unos minutos</option>
+                                    <option value="hours">Hace unas horas</option>
+                                    <option value="days">Hace unos días</option>
+                                    <option value="weeks">Hace semanas o meses</option>
+                                </select>
+                            </div>
+                            <div class="full-width-group mt-15">
+                                <fieldset class="critical-fieldset">
+                                    <legend>Señales de Riesgo Crítico (Seleccione si aplican):</legend>
+                                    <div class="checkbox-grid">
+                                        <label class="checkbox-label"><input type="checkbox" id="pat-breath"><span>Falta
+                                                de aliento / Ahogo</span></label>
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="pat-bleed"><span>Hemorragia activa / Sangrado</span></label>
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="pat-chest"><span>Presión pesada en el pecho</span></label>
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="pat-trauma"><span>Accidente fuerte o caída reciente</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" id="pat-fever"><span>Fiebre
+                                                alta sostenida</span></label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form-actions mt-25">
+                                <button type="button" class="btn-primary large-action"
+                                    onclick="calculatePatient()">Obtener Estimación</button>
+                            </div>
+                        </form>
+                        <div id="patient-result" class="result-container hidden" aria-live="polite"></div>
+                    </div>
+
+                    <!-- TAB 2: LOGIN PROFESIONAL -->
+                    <div id="login-tab" class="triage-content hidden">
+                        <h3 class="tab-title">Plataforma Clínica ESI</h3>
+                        <p class="section-desc tab-desc">Acceso exclusivo para
+                            categorización oficial. Ingrese sus credenciales.</p>
+                        <form id="login-form" class="professional-form form-centered-sm">
+                            <div class="form-group">
+                                <label for="username">Usuario (Ej: admin):</label>
+                                <input type="text" id="username" class="standard-select"
+                                    placeholder="Ingrese su rut o código">
+                            </div>
+                            <div class="form-group mt-15">
+                                <label for="password">Contraseña (Ej: 1234):</label>
+                                <input type="password" id="password" class="standard-select"
+                                    placeholder="Clave de seguridad">
+                            </div>
+                            <p id="login-error" class="login-error-msg hidden">
+                                Credenciales incorrectas.</p>
+                            <div class="form-actions mt-20">
+                                <button type="button" class="btn-primary large-action" onclick="attemptLogin()">Ingresar
+                                    al Sistema</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- TAB 3: ESI OFICIAL PROFESIONAL -->
+                    <div id="prof-tab" class="triage-content hidden">
+                        <h3 class="tab-title">Categorización Médica Restringida
+                            (Índice ESI)</h3>
+                        <p class="section-desc tab-desc">Sistema oficial de
+                            clasificación de nivel de energía y dotación de enfermería.</p>
+
+                        <form id="clinic-form" class="professional-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="clin-pain">Escala Visual Analógica de Dolor (EVA 0-10):</label>
+                                    <div class="range-controls">
+                                        <input type="range" id="clin-pain" min="0" max="10" value="0">
+                                        <span id="pain-val-display" class="value-badge">0/10</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clin-walk">Movilidad Ambulatoria:</label>
+                                    <select id="clin-walk" class="standard-select">
+                                        <option value="yes">Paciente logra deambular</option>
+                                        <option value="no">Requiere soporte físico / camilla</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="clin-conscious">Nivel de Conciencia / Estado Mental:</label>
+                                    <select id="clin-conscious" class="standard-select">
+                                        <option value="normal">Alerta y Orientado (Normal)</option>
+                                        <option value="altered">Letárgico / Confuso / Alterado</option>
+                                        <option value="unconscious">Inconsciente / No responde</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="clin-time">Tiempo de Evolución Sintomática:</label>
+                                    <select id="clin-time" class="standard-select">
+                                        <option value="minutes">Agudo (Minutos)</option>
+                                        <option value="hours">Subagudo (Horas recientes)</option>
+                                        <option value="days">Días de evolución</option>
+                                        <option value="weeks">Crónico (Semanas o más)</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="full-width-group">
+                                <fieldset class="critical-fieldset">
+                                    <legend>Señales de Riesgo Crítico (Seleccione si aplican):</legend>
+                                    <div class="checkbox-grid">
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="clin-breath"><span>Distrés Respiratorio Severo (Asfixia o SatO2
+                                                &lt;92%)</span></label>
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="clin-bleed"><span>Hemorragia Exanguinante Activa</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" id="clin-chest"><span>Dolor
+                                                Torácico de características isquémicas</span></label>
+                                        <label class="checkbox-label"><input type="checkbox"
+                                                id="clin-vitals"><span>Descompensación Hemodinámica (FC
+                                                >100)</span></label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form-row mt-15">
+                                <div class="form-group">
+                                    <label for="clin-resources">Estimación de Recursos Necesarios:</label>
+                                    <select id="clin-resources" class="standard-select">
+                                        <option value="0">Ninguno (Radiografía no requerida, sin Labs, Px Básico)
+                                        </option>
+                                        <option value="1">Un recurso (Ej: Solo examen de sangre o Rx simple)</option>
+                                        <option value="many">Múltiples recursos (Politrauma, Labs + Imágen, UCI)
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn-primary btn-alt large-action" onclick="calculateESI()">Aplicar Protocolo de
+                                    Clasificación</button>
+                            </div>
+                        </form>
+
+                        <div id="prof-result-screen" class="result-container hidden" aria-live="polite">
+                            <h3>Veredicto ESI Institucional</h3>
+                            <div id="prof-esi-result" class="esi-box default"></div>
+                            <p id="prof-esi-desc" class="esi-description"></p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container text-center">
+            <p>&copy; 2026 Clínica Universitaria. Todos los derechos reservados.</p>
+            <p><small>Desarrollado según modelos de accesibilidad y escalabilidad clínica.</small></p>
+        </div>
+    </footer>
+
+    <script src="js/triage.js"></script>
+</body>
+</html>

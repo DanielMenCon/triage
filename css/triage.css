@@ -1,0 +1,171 @@
+/*
+   ESTILOS ESPECÍFICOS: PÁGINA DE TRIAGE Y ESI
+*/
+
+.urgency-section { margin-top: 2rem; }
+.urgency-banner {
+    background-color: var(--alert-red);
+    padding: 1.5rem 0;
+    color: white;
+}
+.urgency-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 !important;
+}
+.urgency-title { color: white; margin-bottom: 0; }
+.urgency-subtitle { color: #d1e8ff; margin-top: 5px; }
+
+.wait-time-badge {
+    background-color: white;
+    color: var(--alert-red);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.wait-time-badge .wait-label {
+    display: block;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.wait-time-badge .wait-time {
+    display: block;
+    font-size: 2rem;
+    margin-top: 0.2rem;
+}
+
+.triage-tabs { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; }
+.triage-section { margin-top: 2rem; padding: 3rem 0; border-top: 1px solid #e2e8f0; }
+.tab-title { margin-top: 0; font-size: 1.8rem; text-align: center; }
+.tab-desc { margin: 0 auto 2rem; text-align: center; }
+
+.triage-content {
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* FORMULARIOS PROFESIONALES */
+.professional-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border-top: 5px solid var(--secondary-blue);
+}
+.form-centered { max-width: 600px; margin: 0 auto; }
+.form-centered-sm { max-width: 400px; margin: 0 auto; }
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+.standard-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.range-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+input[type="range"] { flex-grow: 1; }
+.value-badge {
+    background-color: var(--bg-light);
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    border: 1px solid var(--secondary-blue);
+}
+.critical-fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    background-color: #fffbfa;
+}
+.critical-fieldset legend {
+    font-weight: 700;
+    color: var(--alert-red);
+    padding: 0 0.5rem;
+}
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+}
+.checkbox-label input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--alert-red);
+}
+.form-actions { text-align: center; }
+.large-action {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    width: 100%;
+    max-width: 400px;
+}
+.login-error-msg { color: var(--alert-red); margin-top: 1rem; font-weight: bold; text-align: center; }
+
+/* RESULTADOS ESI */
+.result-container {
+    margin-top: 2rem;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+.esi-box {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 1rem;
+    margin: 1rem auto;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+}
+.esi-description {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.esi-1 { background-color: #c60f13; }
+.esi-2 { background-color: #d37504; }
+.esi-3 { background-color: #e3b000; color: #1a1a1a; }
+.esi-4 { background-color: #007a33; }
+.esi-5 { background-color: #004b87; }
+
+@media (max-width: 768px) {
+    .urgency-flex,
+    .form-row,
+    .checkbox-grid {
+        grid-template-columns: 1fr;
+        flex-direction: column;
+    }
+    .wait-time-badge {
+        margin-top: 1rem;
+    }
+}

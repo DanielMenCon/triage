@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- 
   PROYECTO CLÍNICO UNIVERSITARIO - EVALUACIÓN
-  Arquitectura guiada por benchmarking estructurado: Clínica Dávila, Alemana y Bupa.
+  Arquitectura modular y escalable.
 -->
 <html lang="es">
 
@@ -14,7 +14,8 @@
 
     <!-- METADATOS Y RECURSOS EXTERNOS -->
     <link rel="icon" type="image/png" href="images/favicon_ffta.png"> <!-- Icono personalizado -->
-    <link rel="stylesheet" href="css/style.css"> <!-- Hoja de estilos principal -->
+    <link rel="stylesheet" href="css/global.css"> <!-- Hoja de estilos global -->
+    <link rel="stylesheet" href="css/home.css"> <!-- Hoja de estilos home -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet"> <!-- Fuentes de Google: Inter y Roboto -->
@@ -30,14 +31,14 @@
     <!-- ENLACE DE ACCESIBILIDAD: Oculto visualmente, permite saltar al contenido principal a lectores de pantalla (WCAG) -->
     <a class="skip-link" href="#main-content">Saltar al contenido</a>
 
-    <!-- TOP BAR: Botonera de acción rápida basada en Clínica Dávila y Alemana -->
+    <!-- TOP BAR: Botonera de acción rápida -->
     <div class="top-bar">
         <div class="container top-bar-inner">
             <span class="top-bar-text">Accesos directos para nuestros pacientes</span>
             <div class="top-bar-links">
                 <a href="#triage" class="top-link">📅 Reserva de Horas</a>
                 <a href="#triage" class="top-link">📄 Resultados de Exámenes</a>
-                <a href="#triage" class="top-link highlight-link">🔐 Mi Portal Universitario</a>
+                <a href="registro.html" class="top-link highlight-link">🔐 Mi Portal Universitario</a>
             </div>
         </div>
     </div>
@@ -54,7 +55,9 @@
                 <li><a href="#portada">Inicio</a></li>
                 <li><a href="#especialidades">Servicios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#urgencias" class="btn-highlight">Urgencias y Triage</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="triage.html" class="btn-highlight">Urgencias y Triage</a></li>
             </ul>
         </nav>
     </header>
@@ -63,11 +66,14 @@
 
         <!-- SECTION: Portada (Hero) -->
         <section id="portada" class="hero-section">
-            <div class="hero-content">
+                <div class="hero-content">
                 <h2>Cuidamos de ti y de tu familia</h2>
                 <p>Nuestra clínica presta servicios médicos de primera necesidad con tecnología de punta y un enfoque
                     cálido y humano.</p>
-                <a href="#urgencias" class="btn-primary">Atención Inmediata (Triage)</a>
+                <div class="hero-buttons">
+                    <a href="triage.html" class="btn-primary">Atención Inmediata (Triage)</a>
+                    <a href="registro.html" class="btn-outline">Acceder a Mi Portal</a>
+                </div>
             </div>
         </section>
 
@@ -75,7 +81,7 @@
         <section id="especialidades" class="info-section">
             <div class="container text-center">
                 <h2>Especialidades Médicas</h2>
-                <p class="section-desc" style="margin: 0 auto 3rem;">Contamos con una red integral de expertos para
+                <p class="section-desc center-desc">Contamos con una red integral de expertos para
                     resolver todas tus necesidades de salud.</p>
 
                 <div class="services-grid">
@@ -117,7 +123,7 @@
                     </div>
                     <div class="image-block">
                         <figure>
-                            <img src="images/medical_team.png" alt="Equipo de médicos y enfermeras de la Clínica Universitaria" loading="lazy" decoding="async" width="720" height="480" style="width:100%; height:auto; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.1);">
+                            <img src="images/medical_team.png" alt="Equipo de médicos y enfermeras de la Clínica Universitaria" loading="lazy" decoding="async" width="720" height="480" class="rounded-shadow-img">
                             <figcaption class="sr-only">Equipo de médicos y enfermeras de la Clínica Universitaria</figcaption>
                         </figure>
                     </div>
@@ -125,18 +131,17 @@
             </div>
         </section>
 
-        <!-- SECTION: Desarrollo Académico e Investigación (Inspirado en Clínica Alemana) -->
+        <!-- SECTION: Desarrollo Académico e Investigación -->
         <section id="investigacion" class="info-section">
             <div class="container">
-                <div class="grid-2-cols" style="direction: rtl;">
+                <div class="grid-2-cols rtl-layout">
                     <!-- Para invertir la imagen a la izquierda usando flex/grid -->
-                    <div class="image-block" style="direction: ltr;">
-                        <div class="placeholder-image" role="img" aria-label="Investigadores trabajando en laboratorio"
-                            style="background-color: #004b87; color: white;">
+                    <div class="image-block ltr-layout">
+                        <div class="placeholder-image bg-primary-blue text-white" role="img" aria-label="Investigadores trabajando en laboratorio">
                             <span>[Laboratorio Científico]</span>
                         </div>
                     </div>
-                    <div class="text-block" style="direction: ltr;">
+                    <div class="text-block ltr-layout">
                         <h2>Investigación y Desarrollo Docente</h2>
                         <p>Inspirados en los principales centros académicos de salud, somos un pionero polo de
                             desarrollo científico. Colaboramos directamente con las facultades de Medicina y Ciencias
@@ -147,232 +152,26 @@
             </div>
         </section>
 
-        <!-- SECTION: Urgencias 24/7 y Triage (Enfatizando urgencia como en Dávila/Alemana) -->
-        <section id="urgencias" class="urgency-section">
-
-            <div class="urgency-banner">
-                <div class="container urgency-flex">
-                    <div class="urgency-text">
-                        <h2 style="color: white; margin-bottom: 0;">Servicio de Urgencias 24/7</h2>
-                        <p style="color: #d1e8ff; margin-top: 5px;">Atención inmediata para adultos y niños. Siempre
-                            preparados para ti.</p>
-                    </div>
-                    <div class="wait-time-badge" aria-live="polite">
-                        <span class="wait-label">Tiempo Espera Promedio:</span>
-                        <span class="wait-time">12 min</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Triage Original Form -->
-            <div class="triage-tabs" style="display:flex; justify-content:center; gap: 1rem; margin-top:2rem;">
-                <button class="btn-primary tab-btn" onclick="showTab('patient-tab')">Autoevaluación Paciente</button>
-                <button class="btn-primary outline tab-btn" onclick="showTab('login-tab')">Acceso Profesionales</button>
-            </div>
-
-            <div class="triage-section bg-light"
-                style="margin-top:2rem; padding: 3rem 0; border-top: 1px solid #e2e8f0;">
-                <div class="container">
-
-                    <!-- TAB 1: PACIENTES -->
-                    <div id="patient-tab" class="triage-content">
-                        <h3 style="margin-top:0; font-size:1.8rem; text-align:center;">Autoevaluación de Gravedad</h3>
-                        <p class="section-desc" style="margin: 0 auto 2rem; text-align:center;">Descubra un tiempo
-                            estimado de espera sugerido según sus síntomas urgentes.</p>
-
-                        <form id="patient-form" class="professional-form" style="max-width:600px; margin: 0 auto;">
-                            <!-- Dolor -->
-                            <div class="form-group">
-                                <label for="pat-pain">¿Qué nivel de dolor siente (Escala 0-10)?</label>
-                                <div class="range-controls">
-                                    <input type="range" id="pat-pain" min="0" max="10" value="0">
-                                    <span id="pat-pain-display" class="value-badge">0/10</span>
-                                </div>
-                            </div>
-                            <!-- Caminar -->
-                            <div class="form-group" style="margin-top:1.5rem;">
-                                <label for="pat-walk">¿Puede caminar o desplazarse por su cuenta?</label>
-                                <select id="pat-walk" class="standard-select">
-                                    <option value="yes">Sí, puedo moverme</option>
-                                    <option value="no">No, necesito soporte / silla de ruedas</option>
-                                </select>
-                            </div>
-                            <!-- Conciencia -->
-                            <div class="form-group" style="margin-top:1.5rem;">
-                                <label for="pat-conscious">Estado de Conciencia Actual:</label>
-                                <select id="pat-conscious" class="standard-select">
-                                    <option value="normal">Normal (Despierto y orientado)</option>
-                                    <option value="altered">Alterado (Confusión o desorientación)</option>
-                                    <option value="unconscious">Inconsciente / No responde</option>
-                                </select>
-                            </div>
-                            <!-- Tiempo -->
-                            <div class="form-group" style="margin-top:1.5rem;">
-                                <label for="pat-time">¿Hace cuánto comenzaron los síntomas?</label>
-                                <select id="pat-time" class="standard-select">
-                                    <option value="minutes">De forma repentina / Hace unos minutos</option>
-                                    <option value="hours">Hace unas horas</option>
-                                    <option value="days">Hace unos días</option>
-                                    <option value="weeks">Hace semanas o meses</option>
-                                </select>
-                            </div>
-                            <!-- Señales Críticas -->
-                            <div class="full-width-group" style="margin-top:1.5rem;">
-                                <fieldset class="critical-fieldset">
-                                    <legend>Señales de Riesgo Crítico (Seleccione si aplican):</legend>
-                                    <div class="checkbox-grid">
-                                        <label class="checkbox-label"><input type="checkbox" id="pat-breath"><span>Falta
-                                                de aliento / Ahogo</span></label>
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="pat-bleed"><span>Hemorragia activa / Sangrado</span></label>
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="pat-chest"><span>Presión pesada en el pecho</span></label>
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="pat-trauma"><span>Accidente fuerte o caída reciente</span></label>
-                                        <label class="checkbox-label"><input type="checkbox" id="pat-fever"><span>Fiebre
-                                                alta sostenida</span></label>
-                                    </div>
-                                </fieldset>
-                            </div>
-
-                            <div class="form-actions" style="margin-top:2.5rem;">
-                                <button type="button" class="btn-primary large-action"
-                                    onclick="calculatePatient()">Obtener Estimación</button>
-                            </div>
-                        </form>
-                        <div id="patient-result" class="result-container hidden" aria-live="polite"></div>
-                    </div>
-
-                    <!-- TAB 2: LOGIN PROFESIONAL -->
-                    <div id="login-tab" class="triage-content hidden">
-                        <h3 style="margin-top:0; font-size:1.8rem; text-align:center;">Plataforma Clínica ESI</h3>
-                        <p class="section-desc" style="margin: 0 auto 2rem; text-align:center;">Acceso exclusivo para
-                            categorización oficial. Ingrese sus credenciales.</p>
-                        <form id="login-form" class="professional-form" style="max-width:400px; margin: 0 auto;">
-                            <div class="form-group">
-                                <label for="username">Usuario (Ej: admin):</label>
-                                <input type="text" id="username" class="standard-select"
-                                    placeholder="Ingrese su rut o código">
-                            </div>
-                            <div class="form-group" style="margin-top:1.5rem;">
-                                <label for="password">Contraseña (Ej: 1234):</label>
-                                <input type="password" id="password" class="standard-select"
-                                    placeholder="Clave de seguridad">
-                            </div>
-                            <p id="login-error"
-                                style="color:var(--alert-red); display:none; margin-top:1rem; font-weight:bold; text-align:center;">
-                                Credenciales incorrectas.</p>
-                            <div class="form-actions" style="margin-top:2rem;">
-                                <button type="button" class="btn-primary large-action" onclick="attemptLogin()">Ingresar
-                                    al Sistema</button>
-                            </div>
-                        </form>
-                    </div>
-
-                    <!-- TAB 3: ESI OFICIAL PROFESIONAL (Oculto hasta login) -->
-                    <div id="prof-tab" class="triage-content hidden">
-                        <h3 style="margin-top:0; font-size:1.8rem; text-align:center;">Categorización Médica Restringida
-                            (Índice ESI)</h3>
-                        <p class="section-desc" style="margin: 0 auto 2rem; text-align:center;">Sistema oficial de
-                            clasificación de nivel de energía y dotación de enfermería.</p>
-
-                        <form id="clinic-form" class="professional-form">
-                            <!-- Parámetros estrictos -->
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="clin-pain">Escala Visual Analógica de Dolor (EVA 0-10):</label>
-                                    <div class="range-controls">
-                                        <input type="range" id="clin-pain" min="0" max="10" value="0">
-                                        <span id="pain-val-display" class="value-badge">0/10</span>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="clin-walk">Movilidad Ambulatoria:</label>
-                                    <select id="clin-walk" class="standard-select">
-                                        <option value="yes">Paciente logra deambular</option>
-                                        <option value="no">Requiere soporte físico / camilla</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="clin-conscious">Nivel de Conciencia / Estado Mental:</label>
-                                    <select id="clin-conscious" class="standard-select">
-                                        <option value="normal">Alerta y Orientado (Normal)</option>
-                                        <option value="altered">Letárgico / Confuso / Alterado</option>
-                                        <option value="unconscious">Inconsciente / No responde</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="clin-time">Tiempo de Evolución Sintomática:</label>
-                                    <select id="clin-time" class="standard-select">
-                                        <option value="minutes">Agudo (Minutos)</option>
-                                        <option value="hours">Subagudo (Horas recientes)</option>
-                                        <option value="days">Días de evolución</option>
-                                        <option value="weeks">Crónico (Semanas o más)</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="full-width-group">
-                                <fieldset class="critical-fieldset">
-                                    <legend>Señales de Riesgo Crítico (Seleccione si aplican):</legend>
-                                    <div class="checkbox-grid">
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="clin-breath"><span>Distrés Respiratorio Severo (Asfixia o SatO2
-                                                <92%)< /span></label>
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="clin-bleed"><span>Hemorragia Exanguinante Activa</span></label>
-                                        <label class="checkbox-label"><input type="checkbox" id="clin-chest"><span>Dolor
-                                                Torácico de características isquémicas</span></label>
-                                        <label class="checkbox-label"><input type="checkbox"
-                                                id="clin-vitals"><span>Descompensación Hemodinámica (FC
-                                                >100)</span></label>
-                                    </div>
-                                </fieldset>
-                            </div>
-
-                            <div class="form-row" style="margin-top: 1.5rem;">
-                                <div class="form-group">
-                                    <label for="clin-resources">Estimación de Recursos Necesarios:</label>
-                                    <select id="clin-resources" class="standard-select">
-                                        <option value="0">Ninguno (Radiografía no requerida, sin Labs, Px Básico)
-                                        </option>
-                                        <option value="1">Un recurso (Ej: Solo examen de sangre o Rx simple)</option>
-                                        <option value="many">Múltiples recursos (Politrauma, Labs + Imágen, UCI)
-                                        </option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-actions">
-                                <button type="button" class="btn-primary large-action" onclick="calculateESI()"
-                                    style="background-color: var(--primary-blue);">Aplicar Protocolo de
-                                    Clasificación</button>
-                            </div>
-                        </form>
-
-                        <div id="prof-result-screen" class="result-container hidden" aria-live="polite">
-                            <h3>Veredicto ESI Institucional</h3>
-                            <div id="prof-esi-result" class="esi-box default"></div>
-                            <p id="prof-esi-desc" class="esi-description"></p>
-                        </div>
-                    </div>
-
+        <!-- SECTION: Portal Paciente CTA (Llamado a la acción) -->
+        <section id="registro-cta" class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Tu Salud, a un Clic de Distancia</h2>
+                    <p class="section-desc center-desc">Al registrarte de forma gratuita en <strong>Mi Portal Universitario</strong> obtienes acceso instantáneo a tu historial médico, reserva ágil de horas con especialistas, visualización de resultados de exámenes en línea y una comunicación directa con nuestro equipo médico.</p>
+                    <a href="registro.html" class="cta-btn">Crear Cuenta de Paciente</a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION: Blog de Salud Preventiva (Modelo educativo similar a Bupa) -->
+        <!-- SECTION: Blog de Salud Preventiva -->
         <section id="blog" class="info-section">
             <div class="container text-center">
                 <h2>Educación y Salud Preventiva</h2>
-                <p class="section-desc" style="margin: 0 auto 3rem;">Mantente informado con nuestros artículos médicos
+                <p class="section-desc center-desc">Mantente informado con nuestros artículos médicos
                     redactados por los especialistas de Clínica Universitaria.</p>
                 <div class="blog-grid">
                     <article class="blog-card">
-                        <div class="blog-img" style="background-color: #abcedf;"></div>
+                        <div class="blog-img blog-img-acv"></div>
                         <div class="blog-content">
                             <h3>¿Cómo detectar un ACV a tiempo?</h3>
                             <p>Conoce los síntomas clave (F.A.S.T) que podrían salvar una vida ante un Ataque
@@ -381,7 +180,7 @@
                         </div>
                     </article>
                     <article class="blog-card">
-                        <div class="blog-img" style="background-color: #f1cab9;"></div>
+                        <div class="blog-img blog-img-cardio"></div>
                         <div class="blog-content">
                             <h3>Alimentación y Corazón</h3>
                             <p>Los cardiólogos de nuestra clínica recomiendan 5 hábitos cruciales para proteger tu
@@ -390,7 +189,7 @@
                         </div>
                     </article>
                     <article class="blog-card">
-                        <div class="blog-img" style="background-color: #b5e3c6;"></div>
+                        <div class="blog-img blog-img-mental"></div>
                         <div class="blog-content">
                             <h3>Control de la Salud Mental</h3>
                             <p>Nuevos talleres y charlas comunitarias enfocadas en el manejo efectivo del estrés y la
@@ -411,12 +210,13 @@
                         <p><strong>Sede Principal:</strong> Av. Salud Pública Universitaria 1234.</p>
                         <p><strong>Mesa Central:</strong> +56 2 2000 0000</p>
                         <p><strong>Reserva de Horas:</strong> +56 9 8000 1234</p>
-                        <p style="margin-top: 2rem;">Comprometidos con el desarrollo médico y el bienestar de la
+                        <p class="mt-20">Comprometidos con el desarrollo médico y el bienestar de la
                             comunidad desde 1999.</p>
+                        <a href="registro.html?tab=contacto" class="btn-outline mt-15">Déjanos un Mensaje</a>
                     </div>
                     <div class="contact-map">
                         <figure>
-                            <img src="images/campus_map.png" alt="Mapa del campus médico con ubicación de la Clínica Universitaria" loading="lazy" decoding="async" width="640" height="480" style="width:100%; height:auto; border-radius:8px; box-shadow:0 4px 10px rgba(0,0,0,0.3);">
+                            <img src="images/campus_map.png" alt="Mapa del campus médico con ubicación de la Clínica Universitaria" loading="lazy" decoding="async" width="640" height="480" class="rounded-shadow-img-heavy">
                             <figcaption class="sr-only">Mapa isométrico que muestra la ubicación del campus médico</figcaption>
                         </figure>
                     </div>
@@ -430,12 +230,12 @@
     <footer class="site-footer" role="contentinfo">
         <div class="container text-center">
             <p>&copy; 2026 Clínica Universitaria. Todos los derechos reservados.</p>
-            <p><small>Desarrollado según modelos de accesibilidad y escalabilidad clínica chilena.</small></p>
+            <p><small>Desarrollado según modelos de accesibilidad y escalabilidad clínica.</small></p>
         </div>
     </footer>
 
-    <!-- ARCHIVOS DE JAVASCRIPT: Lógica de la aplicación y funcionalidades del formulario -->
-    <script src="js/app.js"></script>
+    <!-- ARCHIVOS DE JAVASCRIPT -->
+    <!-- (app.js ha sido renombrado a triage.js y se carga solo en triage.html) -->
 </body>
 
 </html>

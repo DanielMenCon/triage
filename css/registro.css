@@ -1,0 +1,134 @@
+/* --- ESTILOS ESPECÍFICOS PARA PÁGINA DE REGISTRO/LOGIN/CONTACTO --- */
+
+.auth-main {
+    min-height: calc(100vh - 40px); /* 40px de la top-bar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    padding: 3rem 1rem;
+}
+
+.auth-container {
+    background: white;
+    width: 100%;
+    max-width: 550px;
+    border-radius: 12px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+    padding: 2.5rem;
+    overflow: hidden;
+}
+
+.auth-title {
+    font-size: 2.2rem;
+    color: var(--primary-blue);
+    margin-bottom: 0.5rem;
+}
+
+.auth-subtitle {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.auth-tabs {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+.auth-tabs .tab-btn {
+    flex: 1;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.95rem;
+}
+
+.auth-forms-wrapper {
+    margin-top: 0.5rem;
+}
+
+.auth-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.auth-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.auth-content label {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+}
+
+.auth-content input[type="text"],
+.auth-content input[type="email"],
+.auth-content input[type="password"],
+.auth-content textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #c2d1e0;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: #fafcfd;
+}
+
+.auth-content input:focus,
+.auth-content textarea:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 122, 204, 0.15);
+    background-color: #fff;
+}
+
+.auth-content textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+/* Feedback Dinámico y Contadores */
+.form-mensaje {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    min-height: 1.2rem;
+    text-align: center;
+}
+
+.msg-error {
+    color: var(--alert-red);
+}
+
+.msg-success {
+    color: var(--medical-green);
+}
+
+.char-counter {
+    text-align: right;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+}
+
+.char-counter.limit-reached {
+    color: var(--alert-red);
+    font-weight: bold;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1.5rem;
+    }
+    .auth-tabs {
+        flex-direction: column;
+    }
+}

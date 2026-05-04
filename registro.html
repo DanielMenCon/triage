@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Portal de registro, acceso y contacto de la Clínica Universitaria.">
+    <title>Portal de Acceso - Clínica Universitaria</title>
+
+    <link rel="icon" type="image/png" href="images/favicon_ffta.png">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/registro.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- ENLACE DE ACCESIBILIDAD -->
+    <a class="skip-link" href="#auth-main">Saltar al contenido</a>
+
+    <div class="top-bar">
+        <div class="container top-bar-inner">
+            <span class="top-bar-text">Accesos directos para nuestros pacientes</span>
+            <div class="top-bar-links">
+                <a href="index.html" class="top-link">⬅ Volver al Inicio</a>
+            </div>
+        </div>
+    </div>
+
+    <main id="auth-main" class="auth-main">
+        <div class="auth-container">
+            <h2 class="text-center auth-title">Portal de Acceso Clínico</h2>
+            <p class="text-center auth-subtitle">Gestiona tus credenciales o contáctanos para asistencia.</p>
+
+            <!-- TABS -->
+            <div class="auth-tabs">
+                <button class="btn-primary tab-btn" onclick="showAuthTab('tab-registro')">Registro</button>
+                <button class="btn-primary outline tab-btn" onclick="showAuthTab('tab-login')">Ingresar</button>
+                <button class="btn-primary outline tab-btn" onclick="showAuthTab('tab-contacto')">Contacto</button>
+            </div>
+
+            <div class="auth-forms-wrapper">
+
+                <!-- TAB 1: REGISTRO -->
+                <div id="tab-registro" class="auth-content">
+                    <h3 class="tab-title">Nuevo Usuario</h3>
+                    <form id="registroForm" aria-label="Formulario de registro">
+                        <div class="form-group">
+                            <label for="reg-username">Usuario</label>
+                            <input type="text" id="reg-username" name="username" placeholder="Nombre de usuario"
+                                autocomplete="username">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-email">Correo Electrónico</label>
+                            <input type="email" id="reg-email" name="email" placeholder="ejemplo@correo.com"
+                                autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-password">Contraseña</label>
+                            <input type="password" id="reg-password" name="password" placeholder="Mínimo 8 caracteres"
+                                autocomplete="new-password">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reg-confirm">Confirmar Contraseña</label>
+                            <input type="password" id="reg-confirm" name="confirmPassword"
+                                placeholder="Repite tu contraseña" autocomplete="new-password">
+                        </div>
+
+                        <p id="reg-mensaje" class="form-mensaje" aria-live="polite"></p>
+                        <button type="submit" class="btn-primary w-100 mt-15">Registrarse</button>
+                    </form>
+                </div>
+
+                <!-- TAB 2: LOGIN -->
+                <div id="tab-login" class="auth-content hidden">
+                    <h3 class="tab-title">Iniciar Sesión</h3>
+                    <form id="loginForm" aria-label="Formulario de inicio de sesión">
+                        <div class="form-group">
+                            <label for="log-email">Correo Electrónico</label>
+                            <input type="email" id="log-email" name="email" placeholder="ejemplo@correo.com"
+                                autocomplete="email">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="log-password">Contraseña</label>
+                            <input type="password" id="log-password" name="password" placeholder="Tu contraseña"
+                                autocomplete="current-password">
+                        </div>
+
+                        <p id="log-mensaje" class="form-mensaje" aria-live="polite"></p>
+                        <button type="submit" class="btn-primary w-100 mt-15">Ingresar</button>
+                    </form>
+                </div>
+
+                <!-- TAB 3: CONTACTO -->
+                <div id="tab-contacto" class="auth-content hidden">
+                    <h3 class="tab-title">Contáctanos</h3>
+                    <form id="contactoForm" aria-label="Formulario de contacto">
+                        <div class="form-group">
+                            <label for="cont-nombre">Nombre Completo</label>
+                            <input type="text" id="cont-nombre" name="nombre" placeholder="Tu nombre">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cont-asunto">Asunto</label>
+                            <input type="text" id="cont-asunto" name="asunto" placeholder="Motivo de tu mensaje">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="cont-mensaje">Mensaje</label>
+                            <textarea id="cont-mensaje" name="mensaje" rows="4" placeholder="Escribe tu mensaje aquí..."
+                                maxlength="200"></textarea>
+                            <div class="char-counter"><span id="char-count">0</span>/200 caracteres</div>
+                        </div>
+
+                        <p id="cont-feedback" class="form-mensaje" aria-live="polite"></p>
+                        <button type="submit" class="btn-primary w-100 mt-15">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container text-center">
+            <p>&copy; 2026 Clínica Universitaria. Todos los derechos reservados.</p>
+            <p><small>Desarrollado según modelos de accesibilidad y escalabilidad clínica.</small></p>
+        </div>
+    </footer>
+
+    <script src="js/registro.js"></script>
+</body>
+
+</html>

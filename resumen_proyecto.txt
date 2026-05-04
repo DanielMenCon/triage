@@ -1,0 +1,54 @@
+=============================================================
+RESUMEN DE FUNCIONALIDADES Y REQUISITOS TÉCNICOS
+Proyecto: Portal Clínico Universitario (Registro y Triage)
+=============================================================
+
+Este documento detalla cómo el código del proyecto cumple con los conceptos clave y requisitos solicitados en la evaluación práctica.
+
+-------------------------------------------------------------
+1. VALIDACIÓN PREVENTIVA (Evitar recarga de página)
+-------------------------------------------------------------
+- Concepto: Se utilizó la función `event.preventDefault()` en todos los formularios.
+- Implementación (JS): Cuando un usuario presiona el botón "submit" (Registrarse, Ingresar, Enviar Mensaje), el navegador intenta enviar los datos y recargar la página por defecto. Al capturar el evento `(e)` y ejecutar `e.preventDefault()`, detenemos esta acción nativa. Esto nos permite validar los datos mediante código antes de decidir si el envío es válido o no.
+- Archivos: js/registro.js (líneas 11, 88, 122).
+
+-------------------------------------------------------------
+2. MANIPULACIÓN DEL DOM (Interacción con HTML desde JS)
+-------------------------------------------------------------
+- Concepto: Se utilizaron métodos como `document.getElementById()` y `document.querySelector()`.
+- Implementación (JS): 
+  a) Captura de inputs: Usamos `document.getElementById('reg-email').value` para leer lo que el usuario escribió.
+  b) Interacción de Formularios: Usamos `document.getElementById('registroForm')` para vincular eventos (addEventListener).
+  c) Modificación visual: Seleccionamos los mensajes vacíos en el HTML (`<p id="reg-mensaje">`) y les inyectamos texto de error o éxito utilizando JS.
+- Archivos: js/registro.js y js/triage.js (presente en casi todas las funciones).
+
+-------------------------------------------------------------
+3. FEEDBACK EN TIEMPO REAL (Mensajes en pantalla)
+-------------------------------------------------------------
+- Concepto: Los errores y confirmaciones se muestran directamente en el HTML, no mediante "alert()" nativos ni la consola.
+- Implementación (JS/HTML): 
+  a) Se creó una función genérica llamada `showMessage(elementId, message, isError)`.
+  b) Esta función recibe el ID del lugar donde mostrar el mensaje, el texto, y si es un error o no.
+  c) Modifica el `textContent` (seguro contra ataques XSS) y cambia el color a rojo (clase msg-error) o verde (clase msg-success) dependiendo del resultado de la validación.
+  d) Feedback en vivo: En el formulario de contacto, el evento `input` actualiza letra por letra un contador visual de caracteres, poniéndose rojo al llegar al límite (200 caracteres).
+- Archivos: js/registro.js (línea 61: función showMessage, línea 148: contador de caracteres).
+
+-------------------------------------------------------------
+4. EXPRESIONES REGULARES (Regex para validación de Email)
+-------------------------------------------------------------
+- Concepto: Uso de patrones para verificar que un texto tenga el formato correcto.
+- Implementación (JS): 
+  Se implementó el patrón `/^[^\s@]+@[^\s@]+\.[^\s@]+$/` tanto en el Registro como en el Login.
+  - `^` y `$`: Indican el inicio y fin del texto.
+  - `[^\s@]+`: Obliga a que haya texto que NO sea un espacio vacío ni un arroba.
+  - `@`: Obliga a que exista exactamente un arroba.
+  - `\.[^\s@]+`: Obliga a que exista un punto seguido de más texto (ej: .com).
+  Se evalúa con `emailRegex.test(email)`, devolviendo true o false.
+
+-------------------------------------------------------------
+5. OTROS CONCEPTOS CLAVE APLICADOS
+-------------------------------------------------------------
+- Arquitectura Modular: El código se separó por funciones (index, triage, registro) para CSS, HTML y JS, demostrando conocimiento de escalabilidad de software (Separation of Concerns).
+- Funciones de Flecha (Arrow Functions): Usadas en los listeners `(e) => { ... }` para una sintaxis moderna.
+- Parámetros de URL: Uso de `URLSearchParams` para leer variables en el link (ej: ?tab=contacto) y abrir pestañas automáticamente.
+- Estructura Semántica y Accesibilidad (WCAG): Uso de etiquetas como <main>, <section>, y propiedades como `aria-live="polite"` para que los lectores de pantalla anuncien los errores en voz alta a personas con discapacidad visual.
