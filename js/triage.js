@@ -52,7 +52,8 @@ function showTab(tabId) {
     tabs.forEach(tab => tab.classList.add('hidden'));
 
     // 2. Mostrar la pestaña específica que se solicitó
-    document.getElementById(tabId).classList.remove('hidden');
+    const targetTab = document.getElementById(tabId);
+    if (targetTab) targetTab.classList.remove('hidden');
 
     // 3. Quitar el estado activo (poniendo clase 'outline') a todos los botones
     const btns = document.querySelectorAll('.tab-btn');

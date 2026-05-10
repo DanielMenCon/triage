@@ -35,9 +35,9 @@
     <div class="top-bar">
         <div class="container top-bar-inner">
             <span class="top-bar-text">Accesos directos para nuestros pacientes</span>
-            <div class="top-bar-links">
-                <a href="#triage" class="top-link">📅 Reserva de Horas</a>
-                <a href="#triage" class="top-link">📄 Resultados de Exámenes</a>
+            <div id="top-user-menu" class="top-bar-links">
+                <a href="registro.html?tab=login" class="top-link">📅 Reserva de Horas</a>
+                <a href="registro.html?tab=login" class="top-link">📄 Resultados de Exámenes</a>
                 <a href="registro.html" class="top-link highlight-link">🔐 Mi Portal Universitario</a>
             </div>
         </div>
@@ -64,9 +64,25 @@
 
     <main id="main-content" role="main">
 
-        <!-- SECTION: Portada (Hero) -->
+        <!-- SECTION: Portada (Hero) con Carrusel de Fondo -->
         <section id="portada" class="hero-section">
-                <div class="hero-content">
+            
+            <!-- Carrusel actuando como fondo -->
+            <div class="hero-carrusel-bg">
+                <div class="carrusel-imagen-wrapper">
+                    <img id="imagen-carrusel" src="images/clinic_hero.png" alt="Instalaciones de la clínica" class="carrusel-img">
+                </div>
+            </div>
+            
+            <!-- Capa de superposición para contraste del texto -->
+            <div class="hero-overlay"></div>
+
+            <!-- Controles del carrusel -->
+            <button id="btn-anterior" class="carrusel-btn hero-carrusel-btn" aria-label="Imagen anterior">&#10094;</button>
+            <button id="btn-siguiente" class="carrusel-btn hero-carrusel-btn" aria-label="Imagen siguiente">&#10095;</button>
+
+            <!-- Contenido principal sobre el carrusel -->
+            <div class="hero-content">
                 <h2>Cuidamos de ti y de tu familia</h2>
                 <p>Nuestra clínica presta servicios médicos de primera necesidad con tecnología de punta y un enfoque
                     cálido y humano.</p>
@@ -76,7 +92,6 @@
                 </div>
             </div>
         </section>
-
         <!-- SECTION: Especialidades Médicas  -->
         <section id="especialidades" class="info-section">
             <div class="container text-center">
@@ -137,9 +152,10 @@
                 <div class="grid-2-cols rtl-layout">
                     <!-- Para invertir la imagen a la izquierda usando flex/grid -->
                     <div class="image-block ltr-layout">
-                        <div class="placeholder-image bg-primary-blue text-white" role="img" aria-label="Investigadores trabajando en laboratorio">
-                            <span>[Laboratorio Científico]</span>
-                        </div>
+                        <figure>
+                            <img src="images/laboratorio.png" alt="Investigadores trabajando en el laboratorio de la Clínica Universitaria" loading="lazy" decoding="async" width="720" height="480" class="rounded-shadow-img">
+                            <figcaption class="sr-only">Laboratorio de investigación y desarrollo de la Clínica Universitaria</figcaption>
+                        </figure>
                     </div>
                     <div class="text-block ltr-layout">
                         <h2>Investigación y Desarrollo Docente</h2>
@@ -235,6 +251,8 @@
     </footer>
 
     <!-- ARCHIVOS DE JAVASCRIPT -->
+    <script src="js/auth_global.js"></script>
+    <script src="js/index.js"></script>
     <!-- (app.js ha sido renombrado a triage.js y se carga solo en triage.html) -->
 </body>
 

@@ -1,19 +1,37 @@
 /* 
+   ============================================================================
    PROYECTO CLÍNICO UNIVERSITARIO - ESTILOS GLOBALES
+   ============================================================================
+   Archivo: global.css
+   Páginas: index.html, triage.html, registro.html (TODAS)
+   
+   Este archivo contiene:
+     - Variables CSS (Design Tokens): Colores, fuentes y espaciado del proyecto
+     - Utilidades de accesibilidad (WCAG 2.1): sr-only, skip-link, focus-visible
+     - Reset CSS y estilos base del body
+     - Contenedores y utilidades reutilizables (.container, .hidden, .text-center)
+     - Sistema de botones (.btn-primary, .btn-outline, .btn-highlight)
+     - Componentes globales: Top Bar, Header/Nav, Footer
+     - Tablas de datos del portal (.data-table, .badge)
+     - Media Queries para diseño responsivo (móvil)
+   
+   Para modificar un color en TODO el sitio, basta con cambiar la variable aquí.
 */
 
+/* --- VARIABLES CSS (DESIGN TOKENS) --- */
+/* Estas variables se usan en todo el proyecto con var(--nombre) */
 :root {
-    --primary-blue: #004b87;
-    --secondary-blue: #007acc;
-    --medical-green: #007a33;
-    --alert-red: #c60f13;
-    --alert-yellow: #d37504;
-    --text-dark: #1a1a1a;
-    --text-muted: #595959;
-    --bg-main: #fcfcfc;
-    --bg-light: #f0f4f8;
-    --font-heading: 'Roboto', sans-serif;
-    --font-body: 'Inter', sans-serif;
+    --primary-blue: #004b87;        /* Azul principal: header, títulos, links */
+    --secondary-blue: #007acc;      /* Azul secundario: hover, acentos */
+    --medical-green: #007a33;       /* Verde médico: botones de acción, éxito */
+    --alert-red: #c60f13;           /* Rojo de alerta: urgencias, errores, cerrar sesión */
+    --alert-yellow: #d37504;        /* Naranja/Amarillo: advertencias, triage nivel 2 */
+    --text-dark: #1a1a1a;           /* Color de texto principal (casi negro) */
+    --text-muted: #595959;          /* Color de texto secundario/sutil (gris) */
+    --bg-main: #fcfcfc;             /* Fondo general del body */
+    --bg-light: #f0f4f8;            /* Fondo de secciones alternas (gris azulado claro) */
+    --font-heading: 'Roboto', sans-serif;  /* Fuente para títulos h1, h2, h3 */
+    --font-body: 'Inter', sans-serif;      /* Fuente para texto del body */
 }
 
 /* --- UTILIDADES DE ACCESIBILIDAD --- */
@@ -292,6 +310,44 @@ p { margin-bottom: 1rem; }
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* --- TABLAS DE DATOS (PORTAL) --- */
+.data-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    text-align: left;
+}
+.data-table th, .data-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+.data-table th {
+    background-color: var(--primary-blue);
+    color: white;
+    font-weight: 600;
+}
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+.data-table tr:hover {
+    background-color: #f9f9f9;
+}
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+.badge-success { background-color: #d4edda; color: #155724; }
+.badge-warning { background-color: #fff3cd; color: #856404; }
+.badge-info { background-color: #d1ecf1; color: #0c5460; }
 
 /* MEDIA QUERIES GLOBALES */
 @media (max-width: 768px) {

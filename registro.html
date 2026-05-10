@@ -21,7 +21,7 @@
     <div class="top-bar">
         <div class="container top-bar-inner">
             <span class="top-bar-text">Accesos directos para nuestros pacientes</span>
-            <div class="top-bar-links">
+            <div id="top-user-menu" class="top-bar-links">
                 <a href="index.html" class="top-link">⬅ Volver al Inicio</a>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <p class="text-center auth-subtitle">Gestiona tus credenciales o contáctanos para asistencia.</p>
 
             <!-- TABS -->
-            <div class="auth-tabs">
+            <div id="auth-tabs-container" class="auth-tabs">
                 <button class="btn-primary tab-btn" onclick="showAuthTab('tab-registro')">Registro</button>
                 <button class="btn-primary outline tab-btn" onclick="showAuthTab('tab-login')">Ingresar</button>
                 <button class="btn-primary outline tab-btn" onclick="showAuthTab('tab-contacto')">Contacto</button>
@@ -105,8 +105,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="cont-asunto">Asunto</label>
-                            <input type="text" id="cont-asunto" name="asunto" placeholder="Motivo de tu mensaje">
+                            <label for="cont-email">Correo Electrónico</label>
+                            <input type="email" id="cont-email" name="email" placeholder="ejemplo@correo.com" autocomplete="email">
                         </div>
 
                         <div class="form-group">
@@ -121,6 +121,42 @@
                     </form>
                 </div>
 
+                <!-- TAB 4: MI PORTAL (Solo visible con sesión iniciada) -->
+                <div id="tab-portal" class="auth-content hidden">
+                    <h3 class="tab-title">Bienvenido a Mi Portal</h3>
+                    <div class="portal-dashboard text-center">
+                        <img src="images/icon_cardio.png" alt="Icono Usuario" class="portal-avatar">
+                        <h4 id="portal-user-name" class="portal-username">Cargando...</h4>
+                        <p id="portal-user-email" class="portal-email">...</p>
+                        
+                        <div class="portal-actions">
+                            <button id="btn-ver-horas" class="btn-primary outline w-100">Mis Horas Médicas</button>
+                            <button id="btn-ver-examenes" class="btn-primary outline w-100">Resultados de Exámenes</button>
+                            <a href="triage.html" class="btn-primary w-100">Autoevaluación de Gravedad (Triage)</a>
+                        </div>
+
+                        <button id="btn-cerrar-sesion" class="btn-primary btn-danger w-100">Cerrar Sesión</button>
+                    </div>
+                </div>
+
+                <!-- TAB 5: MIS EXÁMENES -->
+                <div id="tab-examenes" class="auth-content hidden portal-submodule">
+                    <button class="btn-volver-portal btn-outline portal-back-btn">⬅ Volver al Panel</button>
+                    <h3 class="tab-title text-left portal-subtitle">Resultados de Exámenes</h3>
+                    <div id="contenedor-examenes">
+                        <!-- La tabla se generará aquí con JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 6: MIS HORAS -->
+                <div id="tab-horas" class="auth-content hidden portal-submodule">
+                    <button class="btn-volver-portal btn-outline portal-back-btn">⬅ Volver al Panel</button>
+                    <h3 class="tab-title text-left portal-subtitle">Mis Horas Médicas</h3>
+                    <div id="contenedor-horas">
+                        <!-- La tabla se generará aquí con JS -->
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -133,7 +169,9 @@
         </div>
     </footer>
 
+    <script src="js/auth_global.js"></script>
     <script src="js/registro.js"></script>
+    <script src="js/portal.js"></script>
 </body>
 
 </html>

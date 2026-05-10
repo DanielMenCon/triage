@@ -1,4 +1,20 @@
-/* --- ESTILOS ESPECÍFICOS PARA PÁGINA DE REGISTRO/LOGIN/CONTACTO --- */
+/* 
+   ============================================================================
+   ESTILOS ESPECÍFICOS: PÁGINA DE REGISTRO/LOGIN/PORTAL (registro.html)
+   ============================================================================
+   
+   Este archivo contiene los estilos exclusivos del sistema de acceso:
+     - Auth Container: Caja blanca centrada con sombra (formularios + portal)
+     - Auth Tabs: Botones de navegación entre pestañas
+     - Inputs/Textarea: Estilos de campos de formulario con animaciones de focus
+     - Feedback: Mensajes de error (rojo) y éxito (verde)
+     - Portal del Usuario: Avatar, nombre, botones de acción, botón de cerrar sesión
+     - Sub-módulos: Contenedores expandidos para tablas de exámenes y horas
+     - Clase .expanded: Transición suave que agranda el contenedor de 550px a 850px
+   
+   Para cambiar el ancho del formulario, modificar .auth-container max-width
+   Para cambiar el ancho expandido (tablas), modificar .auth-container.expanded
+*/
 
 .auth-main {
     min-height: calc(100vh - 40px); /* 40px de la top-bar */
@@ -17,6 +33,11 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
     padding: 2.5rem;
     overflow: hidden;
+    transition: max-width 0.3s ease; /* Transición suave al expandirse */
+}
+
+.auth-container.expanded {
+    max-width: 850px;
 }
 
 .auth-title {
@@ -121,6 +142,48 @@
 .char-counter.limit-reached {
     color: var(--alert-red);
     font-weight: bold;
+}
+
+/* --- PORTAL DEL USUARIO --- */
+.portal-avatar {
+    width: 80px;
+    margin-bottom: 1rem;
+}
+.portal-username {
+    color: var(--primary-blue);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+.portal-email {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+.portal-actions {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.btn-danger {
+    background-color: var(--alert-red);
+}
+.btn-danger:hover {
+    background-color: #9d0b0f;
+}
+
+/* Sub-módulos del portal (Exámenes, Horas) */
+.portal-submodule {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+.portal-back-btn {
+    color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+}
+.portal-subtitle {
+    margin-bottom: 1.5rem;
 }
 
 /* Ajustes responsivos */

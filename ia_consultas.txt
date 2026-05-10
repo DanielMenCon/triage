@@ -1,0 +1,13 @@
+PROMPTS DE INTELIGENCIA ARTIFICIAL UTILIZADOS EN LA EVALUACIÓN
+
+1. Para la creación del Carrusel de Imágenes:
+Prompt: "Escribe el código HTML, CSS y JavaScript para implementar un carrusel de imágenes semántico. Debe incluir botones de 'Anterior' y 'Siguiente' que modifiquen el DOM para cambiar la imagen visible, y que el carrusel sea cíclico (cuando llega al final, vuelve al inicio). La función en JS debe ser modular y llamarse cambiarImagen(direccion)."
+
+2. Para la validación de formularios y modularización:
+Prompt: "Tengo tres formularios (Registro, Login y Contacto). Escribe una función de JavaScript modular llamada validarDatos() que reciba el tipo de formulario y los datos, y valide que no haya campos vacíos. Además, incluye validaciones de seguridad como el uso de expresiones regulares (RegEx) para verificar el formato correcto del correo electrónico en todos los formularios, y que la contraseña de registro tenga al menos 8 caracteres."
+
+3. Para la estructura de datos:
+Prompt: "Muestra cómo crear un arreglo global en JavaScript llamado usuariosInscritos. Luego, muestra cómo crear un objeto de usuario con los datos de registro (username, email, password) y usar el método push() para guardarlo en el arreglo cuando el registro sea exitoso."
+
+4. Para actualizar el DOM dinámicamente:
+Prompt: "Crea una función llamada actualizarDOM() que reciba el ID de un elemento HTML, un mensaje de texto y un booleano (esError). La función debe buscar el elemento, insertar el texto como textContent y cambiar las clases de CSS dependiendo de si es un mensaje de error o de éxito."

@@ -1,5 +1,17 @@
 /*
-   ESTILOS ESPECÍFICOS: PÁGINA DE TRIAGE Y ESI
+   ============================================================================
+   ESTILOS ESPECÍFICOS: PÁGINA DE TRIAGE Y ESI (triage.html)
+   ============================================================================
+   
+   Este archivo contiene los estilos exclusivos de la página de urgencias:
+     - Banner de Urgencias: Franja roja con badge de tiempo de espera
+     - Pestañas Triage: Botones para alternar entre Paciente y Profesional
+     - Formularios Profesionales: Layout de dos columnas, selects, rangos y checkboxes
+     - Resultados ESI: Cajas de color con el nivel de triage (1 a 5)
+     - Colores ESI: Rojo (1), Naranja (2), Amarillo (3), Verde (4), Azul (5)
+   
+   Para modificar los colores de los niveles ESI, buscar .esi-1 a .esi-5
+   Para cambiar el layout del formulario profesional, buscar .form-row
 */
 
 .urgency-section { margin-top: 2rem; }

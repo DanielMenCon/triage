@@ -1,5 +1,18 @@
 /* 
-   ESTILOS ESPECÍFICOS: PÁGINA PRINCIPAL (HOME)
+   ============================================================================
+   ESTILOS ESPECÍFICOS: PÁGINA PRINCIPAL (HOME / index.html)
+   ============================================================================
+   
+   Este archivo contiene los estilos exclusivos de la página de inicio:
+     - Hero Section: Portada con carrusel de fondo y botones de acción
+     - Especialidades: Grid de tarjetas de servicios médicos
+     - Contacto: Grid con información y mapa del campus
+     - Blog: Grid de artículos de salud preventiva
+     - CTA (Call To Action): Sección de registro con gradiente
+     - Carrusel: Controles y transiciones del slider de imágenes
+   
+   Para modificar la velocidad del carrusel, editar js/index.js (setInterval)
+   Para agregar una especialidad, duplicar un .service-card en index.html
 */
 
 .info-section {
@@ -8,22 +21,38 @@
 
 /* PORTADA HERO */
 .hero-section {
-    background: linear-gradient(rgba(0, 75, 135, 0.85), rgba(0, 75, 135, 0.85)), url('../images/clinic_hero.png') center/cover;
-    background-color: var(--primary-blue);
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary-blue); /* Fallback */
     color: white;
-    padding: 6rem 5%;
+    padding: 8rem 5%;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+}
+.hero-content {
+    position: relative;
+    z-index: 10;
+    width: 100%;
 }
 .hero-content h2 {
     color: white;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
 .hero-content p {
     font-size: 1.2rem;
     max-width: 800px;
     margin: 0 auto 2rem;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
 }
-.hero-buttons { display: flex; gap: 1rem; justify-content: center; }
+.hero-buttons { 
+    display: flex; 
+    gap: 1rem; 
+    justify-content: center; 
+}
 
 /* ESPECIALIDADES */
 .services-grid {
@@ -191,4 +220,67 @@
     .contact-grid {
         grid-template-columns: 1fr;
     }
+}
+
+/* CARRUSEL DE IMÁGENES - COMO FONDO HERO */
+.hero-carrusel-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 75, 135, 0.7), rgba(0, 75, 135, 0.85));
+    z-index: 1;
+}
+.carrusel-imagen-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #000;
+}
+.carrusel-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.8s ease-in-out;
+}
+.carrusel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+.carrusel-btn:hover {
+    background-color: white;
+    color: var(--primary-blue);
+    transform: translateY(-50%) scale(1.1);
+}
+.carrusel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+#btn-anterior {
+    left: 30px;
+}
+#btn-siguiente {
+    right: 30px;
 }
